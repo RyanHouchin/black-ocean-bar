@@ -66,24 +66,71 @@
     color: var(--accent);
   }
 
-  .stats {
+  /* Batch Selector */
+  .batch-selector {
+    margin-top: 48px;
+  }
+
+  .batch-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .batch-options {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .batch-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .batch-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .batch-btn.active {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .batch-summary {
     display: flex;
     justify-content: center;
     gap: 48px;
-    margin-top: 40px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
   }
 
-  .stat {
+  .batch-stat {
     text-align: center;
   }
 
-  .stat-value {
+  .batch-stat-value {
     font-size: 28px;
     font-weight: 300;
     color: var(--text);
   }
 
-  .stat-label {
+  .batch-stat-label {
     font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -141,6 +188,11 @@
     font-size: 13px;
     white-space: nowrap;
     margin-left: 24px;
+    transition: color 0.3s;
+  }
+
+  .ingredient-amount.scaled {
+    color: var(--accent);
   }
 
   .ingredient-note {
@@ -306,8 +358,8 @@
   @media (max-width: 480px) {
     .container { padding: 48px 20px 80px; }
     h1 { font-size: 32px; }
-    .stats { gap: 32px; }
-    .stat-value { font-size: 22px; }
+    .batch-summary { gap: 24px; }
+    .batch-stat-value { font-size: 22px; }
     .nutrition-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
@@ -319,18 +371,33 @@
     <div class="hero-label">Protocol</div>
     <h1>The Black Ocean Bar</h1>
     <div class="hero-sub">No-bake protein balls <span>/</span> Ray Peat inspired <span>/</span> Zero PUFA</div>
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-value">15</div>
-        <div class="stat-label">Balls</div>
+
+    <div class="batch-selector">
+      <div class="batch-label">Batch Size</div>
+      <div class="batch-options">
+        <button class="batch-btn active" data-mult="1">1x</button>
+        <button class="batch-btn" data-mult="2">2x</button>
+        <button class="batch-btn" data-mult="3">3x</button>
+        <button class="batch-btn" data-mult="4">4x</button>
+        <button class="batch-btn" data-mult="5">5x</button>
       </div>
-      <div class="stat">
-        <div class="stat-value">20</div>
-        <div class="stat-label">Minutes</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">20g</div>
-        <div class="stat-label">Protein</div>
+      <div class="batch-summary">
+        <div class="batch-stat">
+          <div class="batch-stat-value" id="total-balls">15</div>
+          <div class="batch-stat-label">Balls</div>
+        </div>
+        <div class="batch-stat">
+          <div class="batch-stat-value" id="total-protein">300g</div>
+          <div class="batch-stat-label">Total Protein</div>
+        </div>
+        <div class="batch-stat">
+          <div class="batch-stat-value" id="total-cal">3,000</div>
+          <div class="batch-stat-label">Total Cal</div>
+        </div>
+        <div class="batch-stat">
+          <div class="batch-stat-value">20g</div>
+          <div class="batch-stat-label">Per Ball</div>
+        </div>
       </div>
     </div>
   </div>
@@ -342,45 +409,45 @@
       <div class="group-label">Dry</div>
       <div class="ingredient">
         <div class="ingredient-name">Grassfed whey protein</div>
-        <div class="ingredient-amount">1/2 cup</div>
+        <div class="ingredient-amount" data-base="0.5" data-unit="cup">1/2 cup</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Collagen hydrolysate</div>
-        <div class="ingredient-amount">1/3 cup</div>
+        <div class="ingredient-amount" data-base="0.333" data-unit="cup">1/3 cup</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Raw cacao powder</div>
-        <div class="ingredient-amount">2 tbsp</div>
+        <div class="ingredient-amount" data-base="2" data-unit="tbsp">2 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Lucuma powder
           <span class="ingredient-note">natural butterscotch depth, no heat needed</span>
         </div>
-        <div class="ingredient-amount">1 tbsp</div>
+        <div class="ingredient-amount" data-base="1" data-unit="tbsp">1 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Bee pollen</div>
-        <div class="ingredient-amount">1 tbsp</div>
+        <div class="ingredient-amount" data-base="1" data-unit="tbsp">1 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Ceylon cinnamon</div>
-        <div class="ingredient-amount">1/2 tsp</div>
+        <div class="ingredient-amount" data-base="0.5" data-unit="tsp">1/2 tsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Espresso powder
           <span class="ingredient-note">amplifies cacao, not a coffee flavor</span>
         </div>
-        <div class="ingredient-amount">1/2 tsp</div>
+        <div class="ingredient-amount" data-base="0.5" data-unit="tsp">1/2 tsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Cayenne
           <span class="ingredient-note">barely perceptible warmth, extends chocolate finish</span>
         </div>
-        <div class="ingredient-amount">1/8 tsp</div>
+        <div class="ingredient-amount" data-base="0.125" data-unit="tsp">1/8 tsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Spirulina</div>
-        <div class="ingredient-amount">1 tsp</div>
+        <div class="ingredient-amount" data-base="1" data-unit="tsp">1 tsp</div>
       </div>
     </div>
 
@@ -388,49 +455,49 @@
       <div class="group-label">Wet</div>
       <div class="ingredient">
         <div class="ingredient-name">Cashew butter</div>
-        <div class="ingredient-amount">1/3 cup</div>
+        <div class="ingredient-amount" data-base="0.333" data-unit="cup">1/3 cup</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Browned butter</div>
-        <div class="ingredient-amount">3 tbsp</div>
+        <div class="ingredient-amount" data-base="3" data-unit="tbsp">3 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Ghee, melted</div>
-        <div class="ingredient-amount">2 tbsp</div>
+        <div class="ingredient-amount" data-base="2" data-unit="tbsp">2 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Raw honey</div>
-        <div class="ingredient-amount">4 tbsp</div>
+        <div class="ingredient-amount" data-base="4" data-unit="tbsp">4 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Raw calf liver
           <span class="ingredient-note">Sprouts, blended in Vitamix</span>
         </div>
-        <div class="ingredient-amount">3-4 oz</div>
+        <div class="ingredient-amount" data-base="3.5" data-unit="oz">3-4 oz</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Raw egg yolks</div>
-        <div class="ingredient-amount">2</div>
+        <div class="ingredient-amount" data-base="2" data-unit="yolks">2</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Royal jelly</div>
-        <div class="ingredient-amount">1 tbsp</div>
+        <div class="ingredient-amount" data-base="1" data-unit="tbsp">1 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Vanilla extract</div>
-        <div class="ingredient-amount">1 tsp</div>
+        <div class="ingredient-amount" data-base="1" data-unit="tsp">1 tsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Fresh lemon juice
           <span class="ingredient-note">brightens liver's mineral notes</span>
         </div>
-        <div class="ingredient-amount">1/2 tsp</div>
+        <div class="ingredient-amount" data-base="0.5" data-unit="tsp">1/2 tsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Shilajit resin
           <span class="ingredient-note">dissolved in warm fat</span>
         </div>
-        <div class="ingredient-amount">pea-sized</div>
+        <div class="ingredient-amount" data-base="1" data-unit="pea-sized">pea-sized</div>
       </div>
     </div>
 
@@ -440,11 +507,11 @@
         <div class="ingredient-name">Cacao nibs, toasted
           <span class="ingredient-note">30 sec in dry skillet until fragrant</span>
         </div>
-        <div class="ingredient-amount">2 tbsp</div>
+        <div class="ingredient-amount" data-base="2" data-unit="tbsp">2 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Gelatin powder</div>
-        <div class="ingredient-amount">1 tbsp</div>
+        <div class="ingredient-amount" data-base="1" data-unit="tbsp">1 tbsp</div>
       </div>
     </div>
 
@@ -598,5 +665,108 @@
   <div class="footer">Black Ocean</div>
 
 </div>
+
+<script>
+  const fractions = {
+    0.125: '1/8', 0.25: '1/4', 0.333: '1/3', 0.5: '1/2',
+    0.667: '2/3', 0.75: '3/4', 1: '1', 1.5: '1 1/2',
+    1.333: '1 1/3', 1.667: '1 2/3', 2: '2', 2.5: '2 1/2',
+    2.333: '2 1/3', 2.667: '2 2/3', 3: '3', 3.5: '3 1/2',
+    4: '4', 4.5: '4 1/2', 5: '5', 6: '6', 7: '7', 8: '8',
+    9: '9', 10: '10', 12: '12', 14: '14', 15: '15', 16: '16',
+    17.5: '17-18', 18: '18', 20: '20'
+  };
+
+  function toFraction(n) {
+    if (n === 0) return '0';
+    const rounded = Math.round(n * 24) / 24;
+    const whole = Math.floor(rounded);
+    const frac = rounded - whole;
+
+    const fracMap = {
+      0: '', 0.125: '1/8', 0.167: '1/6', 0.25: '1/4',
+      0.333: '1/3', 0.375: '3/8', 0.5: '1/2',
+      0.625: '5/8', 0.667: '2/3', 0.75: '3/4',
+      0.833: '5/6', 0.875: '7/8'
+    };
+
+    let closestKey = 0;
+    let closestDist = 1;
+    for (const key of Object.keys(fracMap)) {
+      const d = Math.abs(frac - parseFloat(key));
+      if (d < closestDist) { closestDist = d; closestKey = key; }
+    }
+
+    const fracStr = fracMap[closestKey];
+    if (whole === 0 && fracStr) return fracStr;
+    if (whole > 0 && fracStr) return whole + ' ' + fracStr;
+    return String(Math.round(n * 10) / 10);
+  }
+
+  function formatAmount(base, mult, unit) {
+    const val = base * mult;
+
+    if (unit === 'pea-sized') {
+      if (mult === 1) return 'pea-sized';
+      return mult + ' pea-sized';
+    }
+    if (unit === 'yolks') {
+      return Math.round(val);
+    }
+    if (unit === 'oz') {
+      if (mult === 1) return '3-4 oz';
+      const lo = Math.round(3 * mult);
+      const hi = Math.round(4 * mult);
+      return lo + '-' + hi + ' oz';
+    }
+
+    // Convert up for readability
+    if (unit === 'tsp' && val >= 3) {
+      return toFraction(val / 3) + ' tbsp';
+    }
+    if (unit === 'tbsp' && val >= 16) {
+      return toFraction(val / 16) + ' cup';
+    }
+    if (unit === 'tbsp' && val >= 4) {
+      const cups = val / 16;
+      if (Math.abs(cups - Math.round(cups * 3) / 3) < 0.05) {
+        return toFraction(cups) + ' cup';
+      }
+    }
+
+    return toFraction(val) + ' ' + unit;
+  }
+
+  let currentMult = 1;
+
+  function updateAll(mult) {
+    currentMult = mult;
+
+    // Update buttons
+    document.querySelectorAll('.batch-btn').forEach(btn => {
+      btn.classList.toggle('active', parseInt(btn.dataset.mult) === mult);
+    });
+
+    // Update summary stats
+    document.getElementById('total-balls').textContent = 15 * mult;
+    document.getElementById('total-protein').textContent = (300 * mult).toLocaleString() + 'g';
+    document.getElementById('total-cal').textContent = (3000 * mult).toLocaleString();
+
+    // Update ingredient amounts
+    document.querySelectorAll('.ingredient-amount[data-base]').forEach(el => {
+      const base = parseFloat(el.dataset.base);
+      const unit = el.dataset.unit;
+      el.textContent = formatAmount(base, mult, unit);
+      el.classList.toggle('scaled', mult > 1);
+    });
+  }
+
+  // Bind buttons
+  document.querySelectorAll('.batch-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      updateAll(parseInt(btn.dataset.mult));
+    });
+  });
+</script>
 </body>
 </html>
