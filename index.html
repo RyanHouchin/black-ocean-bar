@@ -28,7 +28,7 @@
   }
 
   .container {
-    max-width: 680px;
+    max-width: 720px;
     margin: 0 auto;
     padding: 80px 24px 120px;
   }
@@ -62,14 +62,10 @@
     font-weight: 300;
   }
 
-  .hero-sub span {
-    color: var(--accent);
-  }
+  .hero-sub span { color: var(--accent); }
 
   /* Batch Selector */
-  .batch-selector {
-    margin-top: 48px;
-  }
+  .batch-selector { margin-top: 48px; }
 
   .batch-label {
     font-size: 10px;
@@ -99,10 +95,7 @@
     transition: all 0.2s;
   }
 
-  .batch-btn:hover {
-    border-color: var(--accent);
-    color: var(--text);
-  }
+  .batch-btn:hover { border-color: var(--accent); color: var(--text); }
 
   .batch-btn.active {
     background: var(--accent-dim);
@@ -112,35 +105,50 @@
   }
 
   .batch-summary {
-    display: flex;
-    justify-content: center;
-    gap: 48px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
     margin-top: 32px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
   }
 
   .batch-stat {
+    background: var(--surface);
+    padding: 20px 12px;
     text-align: center;
   }
 
   .batch-stat-value {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 300;
     color: var(--text);
+    transition: color 0.3s;
   }
 
+  .batch-stat-value.scaled { color: var(--accent); }
+
   .batch-stat-label {
-    font-size: 10px;
-    letter-spacing: 3px;
+    font-size: 9px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--muted);
     margin-top: 4px;
   }
 
-  section {
-    margin-bottom: 64px;
+  .per-ball-note {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 300;
   }
+
+  .per-ball-note em { color: var(--accent); font-style: normal; }
+
+  section { margin-bottom: 64px; }
 
   h2 {
     font-size: 11px;
@@ -151,9 +159,7 @@
     font-weight: 500;
   }
 
-  .ingredient-group {
-    margin-bottom: 40px;
-  }
+  .ingredient-group { margin-bottom: 40px; }
 
   .group-label {
     font-size: 10px;
@@ -175,24 +181,25 @@
     font-weight: 300;
   }
 
-  .ingredient:last-child {
-    border-bottom: none;
-  }
+  .ingredient:last-child { border-bottom: none; }
+  .ingredient-name { color: var(--text); flex: 1; }
 
-  .ingredient-name {
-    color: var(--text);
-  }
-
-  .ingredient-amount {
-    color: var(--muted);
-    font-size: 13px;
-    white-space: nowrap;
-    margin-left: 24px;
+  .ingredient-grams {
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 400;
+    min-width: 60px;
+    text-align: right;
+    margin-left: 16px;
     transition: color 0.3s;
   }
 
-  .ingredient-amount.scaled {
-    color: var(--accent);
+  .ingredient-volume {
+    color: var(--muted);
+    font-size: 12px;
+    min-width: 70px;
+    text-align: right;
+    margin-left: 12px;
   }
 
   .ingredient-note {
@@ -216,9 +223,7 @@
     font-weight: 300;
   }
 
-  .steps li:last-child {
-    border-bottom: none;
-  }
+  .steps li:last-child { border-bottom: none; }
 
   .steps li::before {
     counter-increment: step;
@@ -239,11 +244,7 @@
     font-weight: 500;
   }
 
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 64px 0;
-  }
+  .divider { height: 1px; background: var(--border); margin: 64px 0; }
 
   .nutrition-grid {
     display: grid;
@@ -253,7 +254,7 @@
     border: 1px solid var(--border);
     border-radius: 12px;
     overflow: hidden;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
   }
 
   .nutrition-cell {
@@ -272,6 +273,33 @@
     font-size: 12px;
     color: var(--muted);
     margin-top: 4px;
+  }
+
+  .nutrition-context {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .context-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .context-toggle:hover { border-color: var(--accent); color: var(--text); }
+
+  .context-toggle.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-dim);
   }
 
   .minerals {
@@ -300,9 +328,7 @@
     font-size: 14px;
   }
 
-  .tip:last-child {
-    border-bottom: none;
-  }
+  .tip:last-child { border-bottom: none; }
 
   .tip-label {
     color: var(--accent);
@@ -311,10 +337,7 @@
     font-size: 13px;
   }
 
-  .tip-text {
-    color: var(--muted);
-    font-weight: 300;
-  }
+  .tip-text { color: var(--muted); font-weight: 300; }
 
   .storage {
     display: grid;
@@ -332,11 +355,7 @@
     text-align: center;
   }
 
-  .storage-cell .duration {
-    font-size: 20px;
-    font-weight: 300;
-    margin-bottom: 4px;
-  }
+  .storage-cell .duration { font-size: 20px; font-weight: 300; margin-bottom: 4px; }
 
   .storage-cell .method {
     font-size: 11px;
@@ -358,9 +377,11 @@
   @media (max-width: 480px) {
     .container { padding: 48px 20px 80px; }
     h1 { font-size: 32px; }
-    .batch-summary { gap: 24px; }
-    .batch-stat-value { font-size: 22px; }
+    .batch-stat-value { font-size: 20px; }
     .nutrition-grid { grid-template-columns: repeat(2, 1fr); }
+    .ingredient { flex-wrap: wrap; }
+    .ingredient-grams { min-width: 50px; }
+    .ingredient-volume { min-width: 60px; }
   }
 </style>
 </head>
@@ -370,7 +391,7 @@
   <div class="hero">
     <div class="hero-label">Protocol</div>
     <h1>The Black Ocean Bar</h1>
-    <div class="hero-sub">No-bake protein balls <span>/</span> Ray Peat inspired <span>/</span> Zero PUFA</div>
+    <div class="hero-sub">No-bake protein truffles <span>/</span> Ray Peat inspired <span>/</span> Zero PUFA</div>
 
     <div class="batch-selector">
       <div class="batch-label">Batch Size</div>
@@ -383,22 +404,23 @@
       </div>
       <div class="batch-summary">
         <div class="batch-stat">
-          <div class="batch-stat-value" id="total-balls">15</div>
+          <div class="batch-stat-value" id="s-balls">15</div>
           <div class="batch-stat-label">Balls</div>
         </div>
         <div class="batch-stat">
-          <div class="batch-stat-value" id="total-protein">300g</div>
+          <div class="batch-stat-value" id="s-protein">123g</div>
           <div class="batch-stat-label">Total Protein</div>
         </div>
         <div class="batch-stat">
-          <div class="batch-stat-value" id="total-cal">3,000</div>
-          <div class="batch-stat-label">Total Cal</div>
+          <div class="batch-stat-value" id="s-weight">525g</div>
+          <div class="batch-stat-label">Total Weight</div>
         </div>
         <div class="batch-stat">
-          <div class="batch-stat-value">20g</div>
-          <div class="batch-stat-label">Per Ball</div>
+          <div class="batch-stat-value" id="s-cal">2,030</div>
+          <div class="batch-stat-label">Total Cal</div>
         </div>
       </div>
+      <div class="per-ball-note">Each ball: <em>~35g</em> on the scale &middot; <em>8g protein</em> &middot; <em>135 cal</em> &middot; 3 balls = one serving</div>
     </div>
   </div>
 
@@ -409,45 +431,54 @@
       <div class="group-label">Dry</div>
       <div class="ingredient">
         <div class="ingredient-name">Grassfed whey protein</div>
-        <div class="ingredient-amount" data-base="0.5" data-unit="cup">1/2 cup</div>
+        <div class="ingredient-grams" data-base="50">50g</div>
+        <div class="ingredient-volume" data-base-vol="0.5" data-vol-unit="cup">~1/2 cup</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Collagen hydrolysate</div>
-        <div class="ingredient-amount" data-base="0.333" data-unit="cup">1/3 cup</div>
+        <div class="ingredient-grams" data-base="35">35g</div>
+        <div class="ingredient-volume" data-base-vol="0.333" data-vol-unit="cup">~1/3 cup</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Raw cacao powder</div>
-        <div class="ingredient-amount" data-base="2" data-unit="tbsp">2 tbsp</div>
+        <div class="ingredient-grams" data-base="10">10g</div>
+        <div class="ingredient-volume" data-base-vol="2" data-vol-unit="tbsp">~2 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Lucuma powder
-          <span class="ingredient-note">natural butterscotch depth, no heat needed</span>
+          <span class="ingredient-note">natural butterscotch depth</span>
         </div>
-        <div class="ingredient-amount" data-base="1" data-unit="tbsp">1 tbsp</div>
+        <div class="ingredient-grams" data-base="8">8g</div>
+        <div class="ingredient-volume" data-base-vol="1" data-vol-unit="tbsp">~1 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Bee pollen</div>
-        <div class="ingredient-amount" data-base="1" data-unit="tbsp">1 tbsp</div>
+        <div class="ingredient-grams" data-base="10">10g</div>
+        <div class="ingredient-volume" data-base-vol="1" data-vol-unit="tbsp">~1 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Ceylon cinnamon</div>
-        <div class="ingredient-amount" data-base="0.5" data-unit="tsp">1/2 tsp</div>
+        <div class="ingredient-grams" data-base="1.5">1.5g</div>
+        <div class="ingredient-volume">~1/2 tsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Espresso powder
           <span class="ingredient-note">amplifies cacao, not a coffee flavor</span>
         </div>
-        <div class="ingredient-amount" data-base="0.5" data-unit="tsp">1/2 tsp</div>
+        <div class="ingredient-grams" data-base="1.5">1.5g</div>
+        <div class="ingredient-volume">~1/2 tsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Cayenne
-          <span class="ingredient-note">barely perceptible warmth, extends chocolate finish</span>
+          <span class="ingredient-note">barely perceptible warmth</span>
         </div>
-        <div class="ingredient-amount" data-base="0.125" data-unit="tsp">1/8 tsp</div>
+        <div class="ingredient-grams" data-base="0.3">0.3g</div>
+        <div class="ingredient-volume">~1/8 tsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Spirulina</div>
-        <div class="ingredient-amount" data-base="1" data-unit="tsp">1 tsp</div>
+        <div class="ingredient-grams" data-base="3">3g</div>
+        <div class="ingredient-volume">~1 tsp</div>
       </div>
     </div>
 
@@ -455,49 +486,59 @@
       <div class="group-label">Wet</div>
       <div class="ingredient">
         <div class="ingredient-name">Cashew butter</div>
-        <div class="ingredient-amount" data-base="0.333" data-unit="cup">1/3 cup</div>
+        <div class="ingredient-grams" data-base="75">75g</div>
+        <div class="ingredient-volume" data-base-vol="0.333" data-vol-unit="cup">~1/3 cup</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Browned butter</div>
-        <div class="ingredient-amount" data-base="3" data-unit="tbsp">3 tbsp</div>
+        <div class="ingredient-grams" data-base="42">42g</div>
+        <div class="ingredient-volume" data-base-vol="3" data-vol-unit="tbsp">~3 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Ghee, melted</div>
-        <div class="ingredient-amount" data-base="2" data-unit="tbsp">2 tbsp</div>
+        <div class="ingredient-grams" data-base="28">28g</div>
+        <div class="ingredient-volume" data-base-vol="2" data-vol-unit="tbsp">~2 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Raw honey</div>
-        <div class="ingredient-amount" data-base="4" data-unit="tbsp">4 tbsp</div>
+        <div class="ingredient-grams" data-base="84">84g</div>
+        <div class="ingredient-volume" data-base-vol="4" data-vol-unit="tbsp">~4 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Raw calf liver
-          <span class="ingredient-note">Sprouts, blended in Vitamix</span>
+          <span class="ingredient-note">blended in Vitamix</span>
         </div>
-        <div class="ingredient-amount" data-base="3.5" data-unit="oz">3-4 oz</div>
+        <div class="ingredient-grams" data-base="100">100g</div>
+        <div class="ingredient-volume">~3.5 oz</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Raw egg yolks</div>
-        <div class="ingredient-amount" data-base="2" data-unit="yolks">2</div>
+        <div class="ingredient-grams" data-base="34">34g</div>
+        <div class="ingredient-volume" data-base-vol="2" data-vol-unit="yolks">2 yolks</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Royal jelly</div>
-        <div class="ingredient-amount" data-base="1" data-unit="tbsp">1 tbsp</div>
+        <div class="ingredient-grams" data-base="15">15g</div>
+        <div class="ingredient-volume" data-base-vol="1" data-vol-unit="tbsp">~1 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Vanilla extract</div>
-        <div class="ingredient-amount" data-base="1" data-unit="tsp">1 tsp</div>
+        <div class="ingredient-grams" data-base="4">4g</div>
+        <div class="ingredient-volume">~1 tsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Fresh lemon juice
           <span class="ingredient-note">brightens liver's mineral notes</span>
         </div>
-        <div class="ingredient-amount" data-base="0.5" data-unit="tsp">1/2 tsp</div>
+        <div class="ingredient-grams" data-base="2.5">2.5g</div>
+        <div class="ingredient-volume">~1/2 tsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Shilajit resin
           <span class="ingredient-note">dissolved in warm fat</span>
         </div>
-        <div class="ingredient-amount" data-base="1" data-unit="pea-sized">pea-sized</div>
+        <div class="ingredient-grams" data-base="0.5">0.5g</div>
+        <div class="ingredient-volume">pea-sized</div>
       </div>
     </div>
 
@@ -505,13 +546,15 @@
       <div class="group-label">Fold-ins</div>
       <div class="ingredient">
         <div class="ingredient-name">Cacao nibs, toasted
-          <span class="ingredient-note">30 sec in dry skillet until fragrant</span>
+          <span class="ingredient-note">30 sec in dry skillet</span>
         </div>
-        <div class="ingredient-amount" data-base="2" data-unit="tbsp">2 tbsp</div>
+        <div class="ingredient-grams" data-base="14">14g</div>
+        <div class="ingredient-volume" data-base-vol="2" data-vol-unit="tbsp">~2 tbsp</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Gelatin powder</div>
-        <div class="ingredient-amount" data-base="1" data-unit="tbsp">1 tbsp</div>
+        <div class="ingredient-grams" data-base="7">7g</div>
+        <div class="ingredient-volume" data-base-vol="1" data-vol-unit="tbsp">~1 tbsp</div>
       </div>
     </div>
 
@@ -521,19 +564,22 @@
         <div class="ingredient-name">Cacao powder
           <span class="ingredient-note">first coat, truffle look</span>
         </div>
-        <div class="ingredient-amount">for rolling</div>
+        <div class="ingredient-grams"></div>
+        <div class="ingredient-volume">for rolling</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Freeze-dried strawberry powder
           <span class="ingredient-note">second dusting, visual contrast</span>
         </div>
-        <div class="ingredient-amount">light dust</div>
+        <div class="ingredient-grams"></div>
+        <div class="ingredient-volume">light dust</div>
       </div>
       <div class="ingredient">
         <div class="ingredient-name">Maldon flaky salt
-          <span class="ingredient-note">pressed into the top of each ball</span>
+          <span class="ingredient-note">pressed into the top</span>
         </div>
-        <div class="ingredient-amount">3-4 crystals</div>
+        <div class="ingredient-grams"></div>
+        <div class="ingredient-volume">3-4 crystals</div>
       </div>
     </div>
   </section>
@@ -550,7 +596,7 @@
       <li>Whisk all dry ingredients in a separate bowl.</li>
       <li>Pour wet into dry. Mix until a thick, cohesive dough forms.</li>
       <li>Fold in toasted cacao nibs and gelatin powder.</li>
-      <li>Scoop with a cookie scoop. Roll into balls.</li>
+      <li>Scoop and roll into balls. Each ball should weigh <strong>~35g</strong> on the scale.</li>
       <li>Roll each ball in cacao powder first, then dust with strawberry powder.</li>
       <li>Press 3-4 Maldon salt flakes into the top of each ball.</li>
       <li>Freeze 10 minutes to set the shell. Transfer to fridge one hour.</li>
@@ -560,25 +606,33 @@
   <div class="divider"></div>
 
   <section>
-    <h2>Per Ball</h2>
+    <h2>Nutrition</h2>
+
+    <div class="nutrition-context">
+      <button class="context-toggle active" data-view="ball">Per Ball</button>
+      <button class="context-toggle" data-view="serving">Per Serving (3)</button>
+      <button class="context-toggle" data-view="batch">Full Batch</button>
+    </div>
+
     <div class="nutrition-grid">
       <div class="nutrition-cell">
-        <div class="value">20g</div>
+        <div class="value" id="n-weight">35g</div>
+        <div class="unit">Weight</div>
+      </div>
+      <div class="nutrition-cell">
+        <div class="value" id="n-protein">8g</div>
         <div class="unit">Protein</div>
       </div>
       <div class="nutrition-cell">
-        <div class="value">11g</div>
+        <div class="value" id="n-fat">8g</div>
         <div class="unit">Fat</div>
       </div>
       <div class="nutrition-cell">
-        <div class="value">7g</div>
-        <div class="unit">Carbs</div>
-      </div>
-      <div class="nutrition-cell">
-        <div class="value">200</div>
+        <div class="value" id="n-cal">135</div>
         <div class="unit">Calories</div>
       </div>
     </div>
+
     <div class="minerals">
       <span class="mineral-tag">Retinol</span>
       <span class="mineral-tag">B12</span>
@@ -601,12 +655,16 @@
   <section>
     <h2>Notes</h2>
     <div class="tip">
+      <div class="tip-label">Scale target</div>
+      <div class="tip-text">Each ball should read ~35g on a kitchen scale. That's a 1.5" truffle.</div>
+    </div>
+    <div class="tip">
       <div class="tip-label">Too crumbly</div>
-      <div class="tip-text">Add ghee, 1 tsp at a time</div>
+      <div class="tip-text">Add ghee, 5g at a time.</div>
     </div>
     <div class="tip">
       <div class="tip-label">Too wet</div>
-      <div class="tip-text">Add whey, 1 tbsp at a time</div>
+      <div class="tip-text">Add whey, 10g at a time.</div>
     </div>
     <div class="tip">
       <div class="tip-label">Raw liver</div>
@@ -644,6 +702,10 @@
       <div class="tip-label">Freeze first</div>
       <div class="tip-text">10 min freeze sets the shell. Fridge softens the core. Truffle mouthfeel.</div>
     </div>
+    <div class="tip">
+      <div class="tip-label">Whey varies</div>
+      <div class="tip-text">Check your label: grams protein per gram powder. Adjust totals accordingly.</div>
+    </div>
   </section>
 
   <div class="divider"></div>
@@ -667,104 +729,137 @@
 </div>
 
 <script>
-  const fractions = {
-    0.125: '1/8', 0.25: '1/4', 0.333: '1/3', 0.5: '1/2',
-    0.667: '2/3', 0.75: '3/4', 1: '1', 1.5: '1 1/2',
-    1.333: '1 1/3', 1.667: '1 2/3', 2: '2', 2.5: '2 1/2',
-    2.333: '2 1/3', 2.667: '2 2/3', 3: '3', 3.5: '3 1/2',
-    4: '4', 4.5: '4 1/2', 5: '5', 6: '6', 7: '7', 8: '8',
-    9: '9', 10: '10', 12: '12', 14: '14', 15: '15', 16: '16',
-    17.5: '17-18', 18: '18', 20: '20'
+  // Base values per 1x batch
+  const BASE = {
+    balls: 15,
+    protein: 123,
+    fat: 120,
+    carbs: 109,
+    cal: 2030,
+    weight: 525
   };
 
-  function toFraction(n) {
-    if (n === 0) return '0';
-    const rounded = Math.round(n * 24) / 24;
-    const whole = Math.floor(rounded);
-    const frac = rounded - whole;
-
-    const fracMap = {
-      0: '', 0.125: '1/8', 0.167: '1/6', 0.25: '1/4',
-      0.333: '1/3', 0.375: '3/8', 0.5: '1/2',
-      0.625: '5/8', 0.667: '2/3', 0.75: '3/4',
-      0.833: '5/6', 0.875: '7/8'
-    };
-
-    let closestKey = 0;
-    let closestDist = 1;
-    for (const key of Object.keys(fracMap)) {
-      const d = Math.abs(frac - parseFloat(key));
-      if (d < closestDist) { closestDist = d; closestKey = key; }
-    }
-
-    const fracStr = fracMap[closestKey];
-    if (whole === 0 && fracStr) return fracStr;
-    if (whole > 0 && fracStr) return whole + ' ' + fracStr;
-    return String(Math.round(n * 10) / 10);
-  }
-
-  function formatAmount(base, mult, unit) {
-    const val = base * mult;
-
-    if (unit === 'pea-sized') {
-      if (mult === 1) return 'pea-sized';
-      return mult + ' pea-sized';
-    }
-    if (unit === 'yolks') {
-      return Math.round(val);
-    }
-    if (unit === 'oz') {
-      if (mult === 1) return '3-4 oz';
-      const lo = Math.round(3 * mult);
-      const hi = Math.round(4 * mult);
-      return lo + '-' + hi + ' oz';
-    }
-
-    // Convert up for readability
-    if (unit === 'tsp' && val >= 3) {
-      return toFraction(val / 3) + ' tbsp';
-    }
-    if (unit === 'tbsp' && val >= 16) {
-      return toFraction(val / 16) + ' cup';
-    }
-    if (unit === 'tbsp' && val >= 4) {
-      const cups = val / 16;
-      if (Math.abs(cups - Math.round(cups * 3) / 3) < 0.05) {
-        return toFraction(cups) + ' cup';
-      }
-    }
-
-    return toFraction(val) + ' ' + unit;
-  }
-
   let currentMult = 1;
+  let currentView = 'ball';
 
-  function updateAll(mult) {
+  function updateBatch(mult) {
     currentMult = mult;
 
-    // Update buttons
     document.querySelectorAll('.batch-btn').forEach(btn => {
       btn.classList.toggle('active', parseInt(btn.dataset.mult) === mult);
     });
 
-    // Update summary stats
-    document.getElementById('total-balls').textContent = 15 * mult;
-    document.getElementById('total-protein').textContent = (300 * mult).toLocaleString() + 'g';
-    document.getElementById('total-cal').textContent = (3000 * mult).toLocaleString();
+    const balls = BASE.balls * mult;
+    const protein = BASE.protein * mult;
+    const weight = BASE.weight * mult;
+    const cal = BASE.cal * mult;
 
-    // Update ingredient amounts
-    document.querySelectorAll('.ingredient-amount[data-base]').forEach(el => {
-      const base = parseFloat(el.dataset.base);
-      const unit = el.dataset.unit;
-      el.textContent = formatAmount(base, mult, unit);
-      el.classList.toggle('scaled', mult > 1);
+    document.getElementById('s-balls').textContent = balls;
+    document.getElementById('s-protein').textContent = protein.toLocaleString() + 'g';
+    document.getElementById('s-weight').textContent = weight.toLocaleString() + 'g';
+    document.getElementById('s-cal').textContent = cal.toLocaleString();
+
+    const isScaled = mult > 1;
+    document.querySelectorAll('.batch-stat-value').forEach(el => {
+      el.classList.toggle('scaled', isScaled);
     });
+
+    // Update per-ball note
+    const perBallWeight = Math.round(weight / balls);
+    document.querySelector('.per-ball-note').innerHTML =
+      'Each ball: <em>~' + perBallWeight + 'g</em> on the scale · <em>8g protein</em> · <em>135 cal</em> · 3 balls = one serving';
+
+    // Update gram amounts
+    document.querySelectorAll('.ingredient-grams[data-base]').forEach(el => {
+      const base = parseFloat(el.dataset.base);
+      const val = base * mult;
+      if (val < 1) {
+        el.textContent = val.toFixed(1) + 'g';
+      } else if (val === Math.round(val)) {
+        el.textContent = Math.round(val) + 'g';
+      } else {
+        el.textContent = (Math.round(val * 10) / 10) + 'g';
+      }
+    });
+
+    // Update volume approximations
+    document.querySelectorAll('.ingredient-volume[data-base-vol]').forEach(el => {
+      const base = parseFloat(el.dataset.baseVol);
+      const unit = el.dataset.volUnit;
+      const val = base * mult;
+      el.textContent = '~' + formatVolume(val, unit);
+    });
+
+    // Update step 8 weight
+    const stepEls = document.querySelectorAll('.steps li');
+    if (stepEls[7]) {
+      stepEls[7].innerHTML = 'Scoop and roll into balls. Each ball should weigh <strong>~' + perBallWeight + 'g</strong> on the scale.';
+    }
+
+    updateNutrition();
   }
 
-  // Bind buttons
+  function formatVolume(val, unit) {
+    if (unit === 'yolks') return Math.round(val) + ' yolks';
+
+    const fracs = [
+      [0.125, '1/8'], [0.25, '1/4'], [0.333, '1/3'], [0.5, '1/2'],
+      [0.667, '2/3'], [0.75, '3/4']
+    ];
+
+    // Convert up
+    if (unit === 'tsp' && val >= 3) { val = val / 3; unit = 'tbsp'; }
+    if (unit === 'tbsp' && val >= 16) { val = val / 16; unit = 'cup'; }
+
+    const whole = Math.floor(val);
+    const frac = val - whole;
+
+    let fracStr = '';
+    let closestDist = 1;
+    for (const [f, s] of fracs) {
+      const d = Math.abs(frac - f);
+      if (d < closestDist && d < 0.08) { closestDist = d; fracStr = s; }
+    }
+    if (frac < 0.06) fracStr = '';
+
+    if (whole === 0 && fracStr) return fracStr + ' ' + unit;
+    if (whole > 0 && fracStr) return whole + ' ' + fracStr + ' ' + unit;
+    if (whole > 0) return whole + ' ' + unit;
+    return (Math.round(val * 10) / 10) + ' ' + unit;
+  }
+
+  function updateNutrition() {
+    const mult = currentMult;
+    const view = currentView;
+
+    let divisor;
+    if (view === 'ball') divisor = BASE.balls * mult;
+    else if (view === 'serving') divisor = (BASE.balls * mult) / 3;
+    else divisor = 1;
+
+    const protein = Math.round((BASE.protein * mult) / divisor);
+    const fat = Math.round((BASE.fat * mult) / divisor);
+    const cal = Math.round((BASE.cal * mult) / divisor);
+    const weight = Math.round((BASE.weight * mult) / divisor);
+
+    document.getElementById('n-weight').textContent = weight + 'g';
+    document.getElementById('n-protein').textContent = protein + 'g';
+    document.getElementById('n-fat').textContent = fat + 'g';
+    document.getElementById('n-cal').textContent = cal.toLocaleString();
+  }
+
+  // Batch buttons
   document.querySelectorAll('.batch-btn').forEach(btn => {
+    btn.addEventListener('click', () => updateBatch(parseInt(btn.dataset.mult)));
+  });
+
+  // Nutrition view toggles
+  document.querySelectorAll('.context-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
-      updateAll(parseInt(btn.dataset.mult));
+      currentView = btn.dataset.view;
+      document.querySelectorAll('.context-toggle').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      updateNutrition();
     });
   });
 </script>
